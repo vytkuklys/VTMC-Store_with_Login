@@ -1,0 +1,234 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+nav {
+    min-height: 10vh;
+    background-color: rgba(0, 0, 0, 0.041);
+}
+
+ul {
+    line-height: 10vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style-type: none;
+    padding-right: 10%;
+
+}
+
+li {
+    padding-right: 2.5rem;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: #333333;
+    font-size: 1.1rem;
+}
+
+a:hover {
+    opacity: .75;
+}
+
+main {
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    padding: 7.5% 5% 0;
+    font-size: clamp(1.15rem, 1.8vw, 1.65rem);
+    color: #333333;
+    line-height: 1.5;
+}
+
+h1>span {
+    font-size: clamp(1.25rem, 2.75vw, 2.25rem);
+}
+
+/*------------sign up page below*/
+
+h2 {
+    font-size: clamp(1.25rem, 2.5vw, 2.25rem);
+    line-height: 3;
+    font-weight: 400;
+}
+
+h3 {
+    text-align: center;
+    font-size: clamp(1.25rem, 2.75vw, 2.25rem);
+    color: #333333;
+
+}
+
+form {
+    width: clamp(20rem, 45vw, 35rem);
+}
+
+input {
+    width: 100%;
+    padding: .75rem .5rem .75rem 1rem;
+    border-radius: .5rem;
+    background-color: rgba(0, 0, 0, 0.041);
+    outline: none;
+    border: none;
+    margin: .25rem;
+    font-size: .9rem;
+}
+
+button {
+    display: block;
+    margin: 2.5% 0 0 auto;
+    background-color: rgba(0, 0, 0, 0.041);
+    color: #333333;
+    border: .01rem solid rgba(0, 0, 0, 0.253);
+    padding: .5rem 1rem;
+    font-size: 1.15rem;
+    cursor: pointer;
+    border-radius: .25rem;
+}
+
+button:hover {
+    opacity: .6;
+}
+
+.form--flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* .quiz__btn {
+    background-color: rgba(172, 255, 47, 0.75);
+    padding: .5rem 1rem;
+    font-weight: bold;
+    border-radius: .5rem;
+    display: inline-block;
+    color: #333333;
+    margin-top: 3.5rem;
+    font-size: 1.5rem;
+}
+
+.quiz__h2 {
+    padding: 5%;
+    text-align: center;
+    line-height: 1;
+}
+
+.quiz__form {
+    margin: 0 auto;
+    text-align: left;
+}
+
+.quiz__label {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.041);
+    font-size: 1.15rem;
+    position: relative;
+    padding: 1rem 1.25rem 1rem 1rem;
+    border-radius: .5rem;
+}
+
+.quiz__label>input {
+    position: absolute;
+    left: 45%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: initial;
+    margin: initial;
+} */
+
+
+/* table {
+    width: clamp(20rem, 55vw, 35rem);
+    margin: 5% auto 7.5%;
+    color: #333333;
+}
+
+th {
+    font-size: 1.45rem;
+    width: 50%;
+}
+
+td {
+    font-size: 1.15rem;
+    padding: .5rem;
+    border-radius: 2rem;
+}
+
+.quiz__td {
+    border-bottom: .1rem dashed gray;
+    border-radius: 0;
+    font-weight: bold;
+    padding-top: 2rem;
+} */
+
+.prekes__h1{
+    font-size: clamp(2.15rem, 2.75vw, 2.65rem);
+    padding: 2.5%;
+}
+
+.prekes__form{
+    width: 90%;
+    display: grid;
+    grid-gap: 1.25rem;
+    grid-template: auto / repeat(auto-fit, minmax(200px, 1fr));
+    text-align: center;
+    margin: 0 auto;
+}
+fieldset{
+    padding: 1rem;
+    border-radius: 1rem;
+}
+fieldset>label{
+    /* font-size: clamp(1.15rem, 1.7vw, 1.65rem); */
+    color: #727272;
+    font-size: clamp(1rem, 1.5vw, 1.45rem);
+
+}
+fieldset>input{
+    max-width: 7.5rem;
+    padding: .5rem initial;
+    margin: initial;
+    text-align: center;
+    background-color: greenyellow;
+    color: #ffffff;
+    font-size: clamp(.85rem, 1.1vw, 1rem);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    cursor: pointer;
+}
+fieldset>input:hover{
+    opacity: .5;
+}
+.prekes__kaina{
+    color: red;
+    padding: 1rem 0 .5rem;
+    font-weight: bolder;
+    font-size: clamp(1.25rem, 1.8vw, 1.75rem);
+
+}
+
+.prekes__preke{
+    color: #333333;
+    font-size: clamp(1.15rem, 1.7vw, 1.65rem);
+    margin-left: 10%;
+    font-weight: bold;
+}
+.prekes__kategorija{
+    color: #333333;
+    font-size: clamp(.85rem, 1.3vw, 1.25rem);
+    margin-top: 5rem;
+    line-height: 4;
+}

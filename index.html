@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Quiz</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.php">Pagrindinis</a></li>
+                <?php
+                        if(isset($_COOKIE["id"])){
+                            echo "<li><a href='vidus.php'>Prekes</a></li>";
+                            echo "<li><a href='cart.php'>Krepselis</a></li>";
+                            echo "<li><a href='includes/logout.inc.php'>Atsijungti</a></li>";
+                        }else{
+                            echo "<li><a href='signup.php'>Užsiregistruoti</a></li>";
+                            echo "<li><a href='login.php'>Prisijungti</a></li>";
+                        }
+                    ?>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1 class="prekes__h1">Prekės</h1>
+
+        <form action='includes/quiz.inc.php' method='post' class="prekes__form">
+            <!-- <label><span>Brokolis</span><span>Šviežio maisto prekė</span><span>1.59</span></label><br>
+            <input type="submit" name="preke" id="brokolis" value="brokolis"> -->
+            <fieldset>
+                <label for="brokolis"><span class="prekes__kaina">169€</span> /vnt.<span class="prekes__preke">Brokolis</span> <br><span class="prekes__kategorija">Laisvalaikio prekė</span></label><br>
+                <input type="text" id="brokolis" name="fname" value="brokolis"><br>
+            </fieldset>
+            <fieldset>
+                <label for="brokolis"><span class="prekes__kaina">169€</span> /vnt.<span class="prekes__preke">Brokolis</span> <br><span class="prekes__kategorija">Laisvalaikio prekė</span></label><br>
+                <input type="text" id="brokolis" name="fname" value="brokolis"><br>
+            </fieldset>
+            <fieldset>
+                <label for="brokolis"><span class="prekes__kaina">169€</span> /vnt.<span class="prekes__preke">Brokolis</span> <br><span class="prekes__kategorija">Laisvalaikio prekė</span></label><br>
+                <input type="text" id="brokolis" name="fname" value="brokolis"><br>
+                <button></button>
+            </fieldset>
+        </form>
+    </main>
+</body>
+
+</html>
