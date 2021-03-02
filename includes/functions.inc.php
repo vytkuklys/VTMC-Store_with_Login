@@ -98,39 +98,29 @@ function loginUser($connect, $username, $pwd){
         exit();
     }
     else{
-        setcookie("id", $uidExists["id"], time() + 3600, '/');
+        setcookie("id", $uidExists["id"], time() + 3600 * 4, '/');
         header("location: ../index.php");
         exit();
     }
 }
 
-function insertScore($connect, $score, $username){
+function insertScore($connect, $username, $score){
     $query = "INSERT INTO vertinimai (vartotojo_id, vidurkis) VALUES (?, ?);";
     $stmt = mysqli_stmt_init($connect);
     if(!mysqli_stmt_prepare($stmt, $query)){
-        header("location: ../quiz.php?error=somethingWentWrong");
+        header("location: ../apklausa.php?error=somethingWentWrong");
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "ss", $score, $username);
+    mysqli_stmt_bind_param($stmt, "ss", $username, $score);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header('location: ../quiz.php');
+    header('location: ../apklausa.php?none=why');
     exit();
 }
 
 function getGoods($connect){
     $query = "SELECT * FROM prekes;";
-    // $stmt = mysqli_stmt_init($connect);
-    // if(!mysqli_stmt_prepare($stmt, $query)){
-    //     header("location: ../stats.php?error=somethingWentWrong");
-    //     exit();
-    // }
-
-    // mysqli_stmt_bind_param($stmt);
-    // mysqli_stmt_execute($stmt);
-
-    // $resultData = mysqli_stmt_get_result($stmt);
     $resultData = mysqli_query($connect, $query);
     $arr = array();
     while ($row = mysqli_fetch_assoc($resultData)) {
@@ -142,7 +132,74 @@ function getGoods($connect){
     }else{
         return false;
     }
-
-    // mysqli_stmt_close($stmt);
     mysqli_close($connect);
+}
+
+function addToCart($connect, $id, $preke){
+    $prekesId = getGoodsId($connect, $preke);
+    $query = "INSERT INTO cart_userid (vartotojo_id, preke_id) VALUES (?, ?);";
+    $stmt = mysqli_stmt_init($connect);
+    if(!mysqli_stmt_prepare($stmt, $query)){
+        header("location: ../vidus.php?error=somethingWentWrong");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "ss", $id, $prekesId);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header('location: ../vidus.php?cart=newItem');
+    exit();
+}
+
+function getGoodsId($connect, $preke){
+    $query = "SELECT prekes_id FROM prekes WHERE pavadinimas = ?";
+    $stmt = mysqli_stmt_init($connect);
+    if(!mysqli_stmt_prepare($stmt, $query)){
+        header("location: ../vidus.php?error=somethingWentWrong");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, 's', $preke);
+    mysqli_stmt_execute($stmt);
+
+    $resultData = mysqli_stmt_get_result($stmt);
+
+    if($row = mysqli_fetch_assoc($resultData)){
+        return $row['prekes_id'];
+    }else{
+        $result = false;
+        return $result;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
+function removeOneGood($connect, $id, $prekesId){
+    $query = "DELETE FROM cart_userid WHERE vartotojo_id = ? AND preke_id = ? LIMIT 1;";
+    $stmt = mysqli_stmt_init($connect);
+    if(!mysqli_stmt_prepare($stmt, $query)){
+        header("location: ../cart.php?error=somethingWentWrong");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "ss", $id, $prekesId);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header('location: ../cart.php?error=none');
+    exit();
+}
+
+function removeAllGoods($connect, $id){
+    $query = "DELETE FROM cart_userid WHERE vartotojo_id = ?";
+    $stmt = mysqli_stmt_init($connect);
+    if(!mysqli_stmt_prepare($stmt, $query)){
+        header("location: ../cart.php?error=somethingWentWrong");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "s", $id);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header('location: ../cart.php?paidClient=true');
+    exit();
 }

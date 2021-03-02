@@ -5,9 +5,9 @@
     <section class="form--flex">
         <h2>Registracijos forma</h2>
         <form action="includes/signup.inc.php" method="post">
-            <input type="text" name="username" value = "asdfs" placeholder="Vartotojo vardas..."> <br>
-            <input type="text" name="name" value = "asdf" placeholder="Vardas..."> <br>
-            <input type="text" name="lastname"  value = "fsf" placeholder="Pavarde..."> <br>
+            <input type="text" name="username" placeholder="Vartotojo vardas..."> <br>
+            <input type="text" name="name" placeholder="Vardas..."> <br>
+            <input type="text" name="lastname" placeholder="Pavarde..."> <br>
             <input type="password" name="pwd" placeholder="Slaptažodis..."> <br>
             <input type="password" name="pwdrepeat" placeholder="Pakartoti slaptažodį..."> <br>
             <button type="submit" name="submit">Registruotis</button>
